@@ -1,5 +1,6 @@
-#Seventh challange from advent calendar (07.12.2020)
-#Author: Matuesz Gąsior
+# Seventh challange from advent calendar (07.12.2020)
+# Author: Matuesz Gąsior
+
 
 list_of_index = []
 values = []
@@ -23,7 +24,6 @@ dict_of_bags = {list_of_index[ind]: bags[ind] for ind in range(len(list_of_index
 bagging = ['shiny gold ']
 num = 0
 for pos in bagging:
-    print(pos)
     for i in dict_of_bags.items():
         k = i[0]
         list_of_bags = list(i[1].keys())
@@ -32,10 +32,17 @@ for pos in bagging:
             bagging.append(k)
 
 
+def many_bags(name):
+    value_steps = []
+    if name == '':
+        return 0
+    else:
+        for n in dict_of_bags[name].items():
+            value_steps.append(many_bags(n[0]) * int(n[1]) + int(n[1]))
+        return sum(value_steps)
 
+
+print(many_bags('shiny gold '))
 bagging.sort()
 print(bagging)
-print(num)
-
-
 
